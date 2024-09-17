@@ -14,7 +14,8 @@ import { FormFieldComponent } from './form-field/form-field.component';
     FormFieldComponent
   ],
   imports: [
-    BrowserModule, HttpClientModule,
+    BrowserModule,
+    HttpClientModule,
     AppRoutingModule
   ],
   providers: [],

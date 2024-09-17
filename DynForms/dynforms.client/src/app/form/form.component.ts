@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Form } from '../../models/form';
 
 @Component({
   selector: 'app-form',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './form.component.css'
 })
 export class FormComponent {
+
+  @Input() context!: Form;
+
+  // Mostrar los campos del formulario
+  display: boolean = false;
 
 }

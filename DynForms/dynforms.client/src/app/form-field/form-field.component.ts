@@ -6,12 +6,8 @@ import { Field } from '../../models/form-field';
   templateUrl: './form-field.component.html',
   styleUrl: './form-field.component.css'
 })
-export class FormFieldComponent implements OnInit {
+export class FormFieldComponent {
   @Input()
-  field!: Field;
-
-    ngOnInit(): void {
-        throw new Error('Method not implemented.');
-    }
+  context!: Field;
 
 }

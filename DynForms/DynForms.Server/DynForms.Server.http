@@ -1,6 +1,6 @@
 @DynForms.Server_HostAddress = http://localhost:5118
 
-GET {{DynForms.Server_HostAddress}}/weatherforecast/
+GET {{DynForms.Server_HostAddress}}/api/form
 Accept: application/json
 
 ###

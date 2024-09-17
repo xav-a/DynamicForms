@@ -5,7 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DynForms.Server.Data;
 
-// Generated from: Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=dyn_forms;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+// Database First Approach
+// Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=dyn_forms;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
 public partial class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext()
