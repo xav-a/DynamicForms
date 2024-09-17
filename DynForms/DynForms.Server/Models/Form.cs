@@ -13,5 +13,5 @@ public partial class Form
 
     public bool Enabled { get; set; }
 
-    public virtual ICollection<Field> TblFields { get; set; } = new List<Field>();
+    public virtual ICollection<Field> Fields { get; set; } = new List<Field>();
 }

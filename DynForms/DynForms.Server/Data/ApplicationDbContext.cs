@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DynForms.Server.Data;
 
+// Generated from: Scaffold-DbContext "Server=localhost\SQLEXPRESS;Database=dyn_forms;Integrated Security=True;Trusted_Connection=True;TrustServerCertificate=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
 public partial class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext()
@@ -16,17 +17,17 @@ public partial class ApplicationDbContext : DbContext
     {
     }
 
-    public virtual DbSet<Field> TblFields { get; set; }
+    public virtual DbSet<Field> Fields { get; set; }
 
-    public virtual DbSet<Form> TblForms { get; set; }
+    public virtual DbSet<Form> Forms { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Field>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Tbl_Fiel__3214EC077A0E4AA2");
+            entity.HasKey(e => e.Id).HasName("PK__Field__3214EC07439F2F46");
 
-            entity.ToTable("Tbl_Field");
+            entity.ToTable("Field");
 
             entity.Property(e => e.Label)
                 .HasMaxLength(128)
@@ -36,16 +37,17 @@ public partial class ApplicationDbContext : DbContext
                 .IsUnicode(false);
             entity.Property(e => e.Width).HasDefaultValue((short)4);
 
-            entity.HasOne(d => d.Form).WithMany(p => p.TblFields)
+            entity.HasOne(d => d.Form).WithMany(p => p.Fields)
                 .HasForeignKey(d => d.FormId)
-                .HasConstraintName("FK__Tbl_Field__FormI__4AB81AF0");
+                .OnDelete(DeleteBehavior.Cascade)
+                .HasConstraintName("FK__Field__FormId__5070F446");
         });
 
         modelBuilder.Entity<Form>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__Tbl_Form__3214EC071B1254A6");
+            entity.HasKey(e => e.Id).HasName("PK__Form__3214EC07C9B7B5AC");
 
-            entity.ToTable("Tbl_Form");
+            entity.ToTable("Form");
 
             entity.Property(e => e.DisplayName)
                 .HasMaxLength(128)
