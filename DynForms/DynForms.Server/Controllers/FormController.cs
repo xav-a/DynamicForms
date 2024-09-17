@@ -12,17 +12,31 @@ namespace DynForms.Server.Controllers
 
         private readonly ILogger<FormController> _logger;
         private readonly IRepository<Form> _formRepository;
+        private readonly IRepository<Field> _fieldRepository;
 
-        public FormController(ILogger<FormController> logger, IRepository<Form> formRepository)
+        public FormController(
+            ILogger<FormController> logger,
+            IRepository<Form> formRepository,
+            IRepository<Field> fieldRepository)
         {
             _logger = logger;
             _formRepository = formRepository;
+            _fieldRepository = fieldRepository;
         }
 
         [HttpGet]
         public async Task<IEnumerable<Form>> Get()
         {
-            return await _formRepository.GetAll();
+            var forms = await _formRepository.GetAll();
+            // TODO: Fix as lazy loading
+            var fields = await _fieldRepository.GetAll();
+            foreach (var form in forms.Where(f => !f.Fields.Any()))
+            {
+                
+                form.Fields = fields.Where(f => f.FormId == form.Id).ToList();
+            }
+
+            return forms;
         }
 
         [HttpGet("{id}")]

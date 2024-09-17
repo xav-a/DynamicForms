@@ -11,6 +11,11 @@ export class FormComponent {
   @Input() context!: Form;
 
   // Mostrar los campos del formulario
-  display: boolean = false;
+  public display: boolean = false;
+
+  public toggleDisplay() {
+    this.display = !this.display;
+    console.log(this.display);
+  }
 
 }

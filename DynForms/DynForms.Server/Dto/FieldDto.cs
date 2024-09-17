@@ -12,6 +12,8 @@ namespace DynForms.Server.Dto
 
         public bool Enabled { get; set; }
 
+        public int? FormId { get; set; }
+
         public static Field MapFrom(FieldDto entity)
         {
             return new Field()
@@ -19,13 +21,9 @@ namespace DynForms.Server.Dto
                 Enabled = entity.Enabled,
                 Label = entity.Label,
                 Type = entity.Type,
-                Width = entity.Width
+                Width = entity.Width,
+                FormId = entity.FormId,
             };
         }
-    }
-
-    public class UpdateFieldDto : FieldDto
-    {
-        public int? FormId { get; set; }
     }
 }

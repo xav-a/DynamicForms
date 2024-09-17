@@ -1,3 +1,11 @@
-<div>
-  <p>{{ context.name }} - {{ context.displayName }} </p>
+
+
+<div class="row" style="margin: 10px">
+  <button (click)="toggleDisplay()">{{ context.displayName }}</button>
+
+  <div class="form" *ngIf="display">
+    <ng-container *ngFor="let field of context.fields">
+      <app-form-field *ngIf="field.enabled" [context]="field"/>
+    </ng-container>
+  </div>
 </div>

@@ -3,8 +3,8 @@
 
 <p *ngIf="!forms">Loading... Refrescar una vez levantado el servidor.</p>
 
-<table *ngIf="forms">
-    <div *ngFor="let form of forms">
-      <app-form [context]="form"></app-form>
-    </div>
-</table>
+<div class="col" *ngIf="forms">
+    <ng-container class="row" *ngFor="let form of forms">
+      <app-form *ngIf="form.enabled" [context]="form"></app-form>
+    </ng-container>
+</div>

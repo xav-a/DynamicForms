@@ -1,6 +1,9 @@
-<div>
-  <label>
+<div [class]="columnWidth">
+  <label [for]="fieldId">
     {{ context.label }}
   </label>
-  <input />
+  <input
+    [id]="fieldId"
+    [type]="context.type"
+  />
 </div>

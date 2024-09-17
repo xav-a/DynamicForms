@@ -35,7 +35,7 @@ namespace DynFields.Server.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<bool> Update(int id, [FromBody] UpdateFieldDto body)
+        public async Task<bool> Update(int id, [FromBody] FieldDto body)
         {
             var entity = await _fieldRepository.Get(id);
             if (entity == null)

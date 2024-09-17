@@ -14,12 +14,17 @@ namespace DynForms.Server.Dto
 
         public static Form MapFrom(FormDto entity)
         {
+            var fields = entity.Fields.Select(FieldDto.MapFrom).ToList();
+            fields.ForEach(field =>
+            {
+                field.FormId = null;
+            });
             return new Form()
             {
                 Name = entity.Name,
                 DisplayName = entity.DisplayName,
                 Enabled = entity.Enabled,
-                Fields = entity.Fields.Select(FieldDto.MapFrom).ToList()
+                Fields = fields
             };
         }
     }

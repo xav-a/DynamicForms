@@ -37,11 +37,6 @@ public partial class ApplicationDbContext : DbContext
                 .HasMaxLength(32)
                 .IsUnicode(false);
             entity.Property(e => e.Width).HasDefaultValue((short)4);
-
-            entity.HasOne(d => d.Form).WithMany(p => p.Fields)
-                .HasForeignKey(d => d.FormId)
-                .OnDelete(DeleteBehavior.Cascade)
-                .HasConstraintName("FK__Field__FormId__5070F446");
         });
 
         modelBuilder.Entity<Form>(entity =>
@@ -56,6 +51,8 @@ public partial class ApplicationDbContext : DbContext
             entity.Property(e => e.Name)
                 .HasMaxLength(64)
                 .IsUnicode(false);
+
+            entity.HasMany(e => e.Fields);
         });
 
         OnModelCreatingPartial(modelBuilder);

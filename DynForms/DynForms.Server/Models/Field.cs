@@ -16,6 +16,4 @@ public partial class Field
     public bool Enabled { get; set; }
 
     public int? FormId { get; set; }
-
-    public virtual Form? Form { get; set; }
 }
